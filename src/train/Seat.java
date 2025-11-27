@@ -54,4 +54,18 @@ public class Seat {
 
         return true;
     }
+
+    public boolean cancelSeat(int seatNumber, String passengerName) {
+
+        int index = seatNumber - 1;
+        if (index < 0 || index >= reservation.length) {
+            throw new SeatNotAvailabilityException("Seat Not Available");
+        }
+        if (reservation[index] != null) {
+            throw new SeatNotAvailabilityException("Seat Already Booked");
+        }
+        reservation[index] = null;
+        System.out.println("Seat " + seatNumber + " cancelled successfully for " + passengerName);
+        return true;
+    }
 }
