@@ -1,4 +1,7 @@
-Railway Ticket Registration System (Console-Based)
+# 🚆 Railway Ticket Registration System (Console-Based)
+
+A simple, interactive Java console application that lets users **book**, **cancel**, and **view** railway tickets through a straightforward menu-driven interface.
+
 
 <img width="885" height="673" alt="Screenshot 2025-12-02 185823" src="https://github.com/user-attachments/assets/972c0aef-335c-4aca-a62a-e26822fbef14" />
 
