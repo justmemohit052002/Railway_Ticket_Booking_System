@@ -6,27 +6,17 @@ public class Seat {
 
     int[] seat_no = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
     String[] reservation = new String[seat_no.length];
-    // name of the person will be store here
-    // if thier is no one who reserve seat,
-    // null will be shown
 
-
-    public int[] Available_Seats() {
-        int count = 0;
-        int[] temp = new int[seat_no.length];
-
-        for (int i = 0; i < seat_no.length; i++) {
-            if (reservation[i] == null) {
-                temp[count++] = seat_no[i];
+    public int[] availableSeats() {
+        System.out.println("Available Seats:");
+        for (int i = 0; i < reservation.length; i++) {
+            if (reservation[i] == null) { // checking reservation array has null value stored in any index
+                //if yes true, display seat no
+                System.out.print(seat_no[i] + " ");
             }
         }
-
-        int[] available = new int[count];
-        for (int i = 0; i < count; i++) {
-            available[i] = temp[i];
-        }
-
-        return available;
+        System.out.println();
+        return seat_no;
     }
 
     public boolean bookSeat(int seatNumber, String passengerName) {
@@ -34,38 +24,53 @@ public class Seat {
         int index = seatNumber - 1;
 
         if (index < 0 || index >= reservation.length) {
-
-            // conditions check only 1-20 seats available
-            // not acceptable 0 or below 0
-            // not acceptable greater then 20
-            //if condition true thorw exception such seat are not available
-
-            throw new SeatNotAvailabilityException("Seat Not Available");
+            //if index is negative or user enter more then seat then actual seat capacity
+            throw new SeatNotAvailabilityException("Invalid Seat Number");
         }
 
         if (reservation[index] != null) {
-            // if reservation[index] is not null , then seat is hold by any person, it throw seat already booked
             throw new SeatNotAvailabilityException("Seat Already Booked");
         }
 
-        reservation[index] = passengerName;// person name will be used here to reseve seat
+        reservation[index] = passengerName;
 
         System.out.println("Seat " + seatNumber + " booked successfully for " + passengerName);
 
         return true;
     }
 
-    public boolean cancelSeat(int seatNumber, String passengerName) {
+    public boolean cancelSeat(int seatNumber) {
 
         int index = seatNumber - 1;
+
         if (index < 0 || index >= reservation.length) {
-            throw new SeatNotAvailabilityException("Seat Not Available");
+            throw new SeatNotAvailabilityException("Invalid Seat Number");
         }
-        if (reservation[index] != null) {
-            throw new SeatNotAvailabilityException("Seat Already Booked");
+
+        if (reservation[index] == null) {
+            try{
+                throw new SeatNotAvailabilityException("Seat is vacant, cannot cancel");
+            }
+            catch(SeatNotAvailabilityException e){
+                System.out.println(e.getMessage());
+            }
+//            throw new SeatNotAvailabilityException("Seat is vacant, cannot cancel");
         }
-        reservation[index] = null;
-        System.out.println("Seat " + seatNumber + " cancelled successfully for " + passengerName);
+        else {
+            reservation[index] = null;
+
+            System.out.println("Seat " + seatNumber + " cancelled successfully");
+        }
+
         return true;
+    }
+
+    public void displayBookedTickets() {
+        System.out.println("Booked Tickets:");
+        for (int i = 0; i < reservation.length; i++) {
+            if (reservation[i] != null) {
+                System.out.println("Seat " + seat_no[i] + " reserved by " + reservation[i]);
+            }
+        }
     }
 }
