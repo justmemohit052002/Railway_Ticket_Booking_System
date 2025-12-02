@@ -4,73 +4,60 @@ Railway Ticket Registration System (Console-Based)
 
 A simple Java console application that allows users to book, cancel, and view railway ticket reservations.
 This project demonstrates basic OOP concepts, arrays, custom exceptions, and a menu-driven interface.
+ ## ✨ Features
 
-📌 Features
+✔ **Show Available Seats**  
+✔ **Book a Seat**  
+✔ **Cancel a Booked Seat**  
+✔ **Display All Booked Tickets**  
+✔ **Validate Seat Numbers (1–20)**  
+✔ **Prevent Invalid Operations Using Custom Exceptions**
 
-Show available seats
+---
 
-Book a seat
+## 🧩 Modules Overview
 
-Cancel a booked seat
+### 🔹 Passenger Module
+- Stores **name**, **age**, and **seat number**  
+- Represents a **ticket holder**
 
-Display all booked tickets
+---
 
-Validate seat numbers
+### 🔹 Seat Module
+- Manages all **20 seats**  
+- Handles **booking**, **cancellation**, and **availability checks**  
+- Uses a `String[] reservation` array to track booked seats  
 
-Prevent invalid operations using custom exceptions
+---
 
--> Modules
-Passenger Module
+### 🔹 Train Module
+- Contains the **Seat Manager**  
+- Acts as the **main operational unit** of the system  
 
-Stores passenger name, age, and seat number
+---
 
-Represents a booked user
+### 🔹 Exception Module
+**SeatNotAvailabilityException**  
+Thrown when:  
+- Booking an **already booked seat**  
+- Entering an **invalid seat number**  
+- Canceling an **empty seat**
 
--> Seat Module
+---
 
-Manages seat numbers (1–20)
+### 🔹 Main Module
+- Displays the **user menu**  
+- Handles input  
+- Calls booking, cancellation, and ticket display methods  
 
-Handles booking, cancellation, and availability
+---
 
-Uses a String[] reservation array to track which seats are taken
+## 🚀 How to Run
 
--> Train Module
+### 1️⃣ Install Java (JDK 8 or above)
 
-Contains the seat manager
+### 2️⃣ Compile the program:
 
-Acts as the main operational unit
-
--> Exception Module
-
-SeatNotAvailabilityException
-Thrown when:
-
-Booking an already booked seat
-
-Entering an invalid seat number
-
-Canceling an empty seat
-
-Main Module
-
-Handles user input
-
-Displays menu
-
-Calls booking/cancellation/display methods
-
-How to Run?
-
-Install Java (JDK 8 or above)
-
-Compile:
-
-javac Main.java
-
-
-Run:
-
-java Main
 
 ===============================================
         > RAILWAY TICKET REGISTRATION <        
